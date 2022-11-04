@@ -13,12 +13,16 @@ const LogoutButton = () => {
         <img :src="logo" alt="logo" />
         <h1>MDX<span>12</span>C</h1>
       </div>
-      <button @click="LogoutButton">Logout</button>
+      <button @click="LogoutButton">
+        <i class="bx bx-log-out-circle bx-rotate-180"></i>
+      </button>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@import '@/scss/global.scss';
+
 .postPage {
   background: linear-gradient(
     -45deg,
@@ -43,6 +47,9 @@ const LogoutButton = () => {
     margin: auto;
     position: relative;
     top: 15px;
+    @include phone {
+      padding: 15px 35px;
+    }
 
     .logo {
       display: flex;
@@ -51,6 +58,10 @@ const LogoutButton = () => {
       img {
         height: 35px;
         margin-right: 20px;
+        @include phone {
+          height: 30px;
+          margin-right: 10px;
+        }
       }
 
       h1 {
@@ -61,6 +72,10 @@ const LogoutButton = () => {
         top: -3px;
         span {
           color: rgba(179, 0, 47, 1);
+        }
+
+        @include phone {
+          font-size: 1.6rem;
         }
       }
     }
