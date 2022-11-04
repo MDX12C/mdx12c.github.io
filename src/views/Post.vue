@@ -2,6 +2,7 @@
 import headerVue from '@/components/header.vue';
 import userPanelVue from '@/components/posts/userPanel.vue';
 import postsVue from '@/components/posts/posts.vue';
+import linkBoardVue from '@/components/posts/linkBoard.vue';
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import postsVue from '@/components/posts/posts.vue';
     <div class="content">
       <userPanelVue></userPanelVue>
       <postsVue></postsVue>
+      <linkBoardVue></linkBoardVue>
     </div>
   </div>
 </template>
