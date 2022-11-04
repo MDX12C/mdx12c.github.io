@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { Login } from '@/apis/login';
 import { StdResponse } from '@/apis';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import Router from '@/router';
 const logindata = ref<Array<string>>([]);
 
 const warningText = ref('');
@@ -22,11 +23,16 @@ const loginButton = () => {
         warningText.value = 'Wrong Password';
       } else {
         localStorage.setItem('TOKEN', res.data);
+        Router.push('/~');
         return;
       }
     }
   );
 };
+
+onMounted(() => {
+  if (localStorage.getItem('TOKEN')) Router.push('/~');
+});
 </script>
 
 <template>
