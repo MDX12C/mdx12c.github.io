@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 import logo from '@/assets/Logo.svg';
+const LogoutButton = () => {
+  localStorage.clear();
+  location.assign('/');
+};
 </script>
 
 <template>
@@ -9,7 +13,7 @@ import logo from '@/assets/Logo.svg';
         <img :src="logo" alt="logo" />
         <h1>MDX<span>12</span>C</h1>
       </div>
-      <button>Logout</button>
+      <button @click="LogoutButton">Logout</button>
     </div>
   </div>
 </template>
@@ -23,6 +27,7 @@ import logo from '@/assets/Logo.svg';
     rgba(0, 149, 255, 1) 100%
   );
   min-height: 100vh;
+  transition: 0.3s ease-in-out;
 
   .header {
     background-color: rgba(255, 255, 255, 0.397);
