@@ -7,7 +7,7 @@ const LogoutButton = () => {
 </script>
 
 <template>
-  <div class="header">
+  <div class="header glass">
     <div class="logo">
       <img :src="logo" alt="logo" />
       <h1>MDX<span>12</span>C</h1>
@@ -21,8 +21,6 @@ const LogoutButton = () => {
 <style lang="scss" scoped>
 @import '@/scss/global.scss';
 .header {
-  background-color: rgba(255, 255, 255, 0.397);
-  backdrop-filter: blur(5px);
   user-select: none;
   display: flex;
   flex-direction: row;
