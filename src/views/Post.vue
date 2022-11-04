@@ -1,10 +1,14 @@
 <script lang="ts" setup>
 import headerVue from '@/components/header.vue';
+import userPanelVue from '@/components/posts/userPanel.vue';
 </script>
 
 <template>
   <div class="postPage">
     <headerVue></headerVue>
+    <div class="content">
+      <userPanelVue></userPanelVue>
+    </div>
   </div>
 </template>
 
@@ -18,5 +22,12 @@ import headerVue from '@/components/header.vue';
   );
   min-height: 100vh;
   transition: 0.3s ease-in-out;
+
+  .content {
+    width: 95vw;
+    margin: 50px auto;
+    display: flex;
+    align-items: flex-start;
+  }
 }
 </style>
