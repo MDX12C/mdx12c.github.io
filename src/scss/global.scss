@@ -10,3 +10,9 @@ $originalBlue: #0095ff;
   box-sizing: border-box;
   font-family: 'Noto Sans TC', sans-serif;
 }
+
+@mixin phone {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}

@@ -1,15 +1,48 @@
+<script lang="ts" setup>
+import { Login } from '@/apis/login';
+import { StdResponse } from '@/apis';
+import { ref } from 'vue';
+const logindata = ref<Array<string>>([]);
+
+const warningText = ref('');
+const isWarning = ref<boolean>(false);
+const buttonText = ref('Login');
+
+const loginButton = () => {
+  if (!logindata.value[0] || !logindata.value[1]) return;
+  buttonText.value = `<i class='bx bxs-circle-quarter bx-spin' ></i>`;
+  Login(logindata.value[0], logindata.value[1]).then(
+    (res: StdResponse<string>) => {
+      buttonText.value = `Login`;
+      if (res.error_code === 1) {
+        isWarning.value = true;
+        warningText.value = 'User name error';
+      } else if (res.error_code === 0) {
+        isWarning.value = true;
+        warningText.value = 'Wrong Password';
+      } else {
+        localStorage.setItem('TOKEN', res.data);
+        return;
+      }
+    }
+  );
+};
+</script>
+
 <template>
   <div class="home">
-    <div class="wrap">
+    <div class="wrap" @keyup.enter="loginButton">
       <h1>Welcome to <span>MDX12C</span></h1>
-      <input type="username" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <button>Login</button>
+      <input v-model="logindata[0]" type="username" placeholder="Username" />
+      <input v-model="logindata[1]" type="password" placeholder="Password" />
+      <p v-if="isWarning">{{ warningText }}</p>
+      <button @click="loginButton" v-html="buttonText"></button>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@import '@/scss/global.scss';
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -48,13 +81,19 @@
     align-items: center;
     padding: 20px 40px;
     border-radius: 10px;
+    max-width: 90vw;
 
     h1 {
       margin-bottom: 30px;
       font-weight: 200;
+      text-align: center;
       span {
         color: rgb(179, 0, 47);
         font-weight: 300;
+      }
+
+      @include phone {
+        font-size: 1.6rem;
       }
     }
 
@@ -76,6 +115,14 @@
       &:focus {
         transform: scale(110%);
       }
+    }
+
+    P {
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: solid 1px rgb(179, 0, 47);
+      background-color: rgba(179, 0, 48, 0.281);
+      color: rgb(179, 0, 47);
     }
 
     button {
