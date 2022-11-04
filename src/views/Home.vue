@@ -23,6 +23,7 @@ const loginButton = () => {
         warningText.value = 'Wrong Password';
       } else {
         localStorage.setItem('TOKEN', res.data);
+        localStorage.setItem('username', logindata.value[0]);
         Router.push('/~');
         return;
       }
