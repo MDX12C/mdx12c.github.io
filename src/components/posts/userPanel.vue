@@ -11,7 +11,7 @@ const username = localStorage.getItem('username');
 
 <style lang="scss" scoped>
 .userPanel {
-  width: 300px;
+  width: 15%;
   background-color: rgba(255, 255, 255, 0.397);
   backdrop-filter: blur(5px);
   display: flex;
@@ -38,7 +38,7 @@ const username = localStorage.getItem('username');
     color: rgba(179, 0, 47, 1);
     text-transform: capitalize;
     font-family: 'Nunito', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
   }
 }

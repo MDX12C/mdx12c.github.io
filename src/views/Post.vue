@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import headerVue from '@/components/header.vue';
 import userPanelVue from '@/components/posts/userPanel.vue';
+import postsVue from '@/components/posts/posts.vue';
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import userPanelVue from '@/components/posts/userPanel.vue';
     <headerVue></headerVue>
     <div class="content">
       <userPanelVue></userPanelVue>
+      <postsVue></postsVue>
     </div>
   </div>
 </template>
