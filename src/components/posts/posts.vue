@@ -1,7 +1,7 @@
 <template>
   <div class="posts">
-    <div class="newPost">
-      <textarea></textarea>
+    <div class="newPost glass">
+      <textarea placeholder="Say something..."></textarea>
       <button>Post</button>
     </div>
     <div class="postList"></div>
@@ -17,8 +17,6 @@
   padding: 0 20px;
 
   .newPost {
-    background-color: rgba(255, 255, 255, 0.397);
-    backdrop-filter: blur(5px);
     width: 100%;
     border-radius: 10px;
     padding: 10px 20px;
@@ -38,7 +36,10 @@
       font-size: 1rem;
       outline: none;
       transition: 0.2s ease-in;
-
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.767);
+        font-weight: 200;
+      }
       &:focus {
         background-color: rgba($color: #fff, $alpha: 0.5);
       }

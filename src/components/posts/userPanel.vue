@@ -3,7 +3,7 @@ const username = localStorage.getItem('username');
 </script>
 
 <template>
-  <div class="userPanel">
+  <div class="userPanel glass">
     <div class="avatar">{{ username?.split('').at(0)?.toUpperCase() }}</div>
     <div class="username">{{ username }}</div>
   </div>
@@ -12,8 +12,6 @@ const username = localStorage.getItem('username');
 <style lang="scss" scoped>
 .userPanel {
   width: 15%;
-  background-color: rgba(255, 255, 255, 0.397);
-  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   align-items: center;
