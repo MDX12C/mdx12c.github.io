@@ -4,7 +4,15 @@
       <textarea placeholder="Say something..."></textarea>
       <button>Post</button>
     </div>
-    <div class="postList"></div>
+    <div class="postList">
+      <div class="post glass">
+        <div class="title">
+          <div class="avatar">B</div>
+          <div class="username">Banahaker</div>
+        </div>
+        <div class="content">HAHA</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,6 +70,44 @@
       &:hover {
         background-color: #fff;
         color: rgb(179, 0, 47);
+      }
+    }
+  }
+
+  .postList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    .post {
+      border-radius: 10px;
+      padding: 10px 25px;
+
+      .title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .avatar {
+          background-color: rgb(179, 0, 47);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+        }
+        .username {
+          margin-left: 10px;
+          text-align: center;
+          color: rgb(179, 0, 47);
+        }
+      }
+
+      .content {
+        margin: 10px 4px;
+        color: white;
       }
     }
   }
