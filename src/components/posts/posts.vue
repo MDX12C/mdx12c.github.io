@@ -1,3 +1,18 @@
+<script lang="ts" setup>
+import { onMounted, onUnmounted, ref } from 'vue';
+import { PostData, GetPost } from '@/apis/getPost';
+import { server } from '@/apis';
+
+const postList = ref<Array<PostData>>([]);
+
+onMounted(() => {
+  const TOKEN = localStorage.getItem('TOKEN');
+  GetPost(String(TOKEN)).then((res) => {
+    postList.value = res;
+  });
+});
+</script>
+
 <template>
   <div class="posts">
     <div class="newPost glass">
@@ -5,12 +20,15 @@
       <button>Post</button>
     </div>
     <div class="postList">
-      <div class="post glass">
+      <div class="post glass" v-for="i in postList">
         <div class="title">
-          <div class="avatar">B</div>
-          <div class="username">Banahaker</div>
+          <div class="avatar">{{ i.author.split('').at(0) }}</div>
+          <div class="username">{{ i.author }}</div>
         </div>
-        <div class="content">HAHA</div>
+        <div class="content">{{ i.content }}</div>
+        <div class="functions">
+          <div class="replies"><i class="bx bx-reply"></i></div>
+        </div>
       </div>
     </div>
   </div>
@@ -81,7 +99,8 @@
     margin-top: 20px;
     .post {
       border-radius: 10px;
-      padding: 10px 25px;
+      padding: 15px 25px;
+      margin-bottom: 20px;
 
       .title {
         display: flex;
@@ -106,8 +125,35 @@
       }
 
       .content {
-        margin: 10px 4px;
+        padding: 10px 4px;
         color: white;
+      }
+
+      .functions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        .replies {
+          cursor: pointer;
+          background-color: rgb(179, 0, 47);
+          width: 35px;
+          height: 35px;
+          font-size: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          color: #fff;
+          font-weight: 600;
+          border: solid 1px rgb(179, 0, 47);
+          transition: 0.2s;
+
+          &:hover {
+            background-color: transparent;
+            color: rgb(179, 0, 47);
+          }
+        }
       }
     }
   }
