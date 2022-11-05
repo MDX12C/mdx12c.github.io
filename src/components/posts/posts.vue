@@ -1,23 +1,42 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import { PostData, GetPost } from '@/apis/getPost';
-import { server } from '@/apis';
+import { NewPost } from '@/apis/newPost';
 
 const postList = ref<Array<PostData>>([]);
+const newPostText = ref<string>('');
+const postingButtonText = ref('Post');
 
 onMounted(() => {
   const TOKEN = localStorage.getItem('TOKEN');
   GetPost(String(TOKEN)).then((res) => {
+    console.log(res);
     postList.value = res;
   });
 });
+
+const NewPostButton = () => {
+  if (newPostText.value == '') return;
+  alert('Confirm Posting:\n Are you sure to post new post?');
+  const data: PostData = {
+    author: String(localStorage.getItem('username')),
+    content: newPostText.value,
+    title: '',
+  };
+  console.log(data);
+  postingButtonText.value = `<i class='bx bxs-circle-quarter bx-spin' ></i>`;
+  NewPost(data).then((res) => {
+    postingButtonText.value = `Post`;
+    location.reload();
+  });
+};
 </script>
 
 <template>
   <div class="posts">
     <div class="newPost glass">
-      <textarea placeholder="Say something..."></textarea>
-      <button>Post</button>
+      <textarea v-model="newPostText" placeholder="Say something..."></textarea>
+      <button @click="NewPostButton" v-html="postingButtonText"></button>
     </div>
     <div class="postList">
       <div class="post glass" v-for="i in postList">
@@ -94,7 +113,7 @@ onMounted(() => {
 
   .postList {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 100%;
     margin-top: 20px;
     .post {

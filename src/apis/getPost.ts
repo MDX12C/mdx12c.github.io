@@ -3,8 +3,8 @@ import { server } from '.';
 
 export interface PostData {
   author: string;
-  content: string;
   title: string;
+  content?: string;
 }
 
 export const GetPost = async (TOKEN?: string) => {
