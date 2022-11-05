@@ -8,6 +8,7 @@
 </template>
 
 <style lang="scss" scoped>
+@import '@/scss/global.scss';
 .linkBoard {
   width: 15%;
   display: flex;
@@ -26,6 +27,10 @@
       background-color: transparent;
       text-decoration: none;
     }
+  }
+
+  @include pad {
+    display: none;
   }
 }
 </style>

@@ -10,6 +10,7 @@ const username = localStorage.getItem('username');
 </template>
 
 <style lang="scss" scoped>
+@import '@/scss/global.scss';
 .userPanel {
   width: 15%;
   display: flex;
@@ -38,6 +39,10 @@ const username = localStorage.getItem('username');
     font-family: 'Nunito', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
+  }
+
+  @include pad {
+    display: none;
   }
 }
 </style>

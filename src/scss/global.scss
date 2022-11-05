@@ -12,6 +12,12 @@ $originalBlue: #0095ff;
   font-family: 'Noto Sans TC', sans-serif;
 }
 
+@mixin pad {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
 @mixin phone {
   @media screen and (max-width: 500px) {
     @content;

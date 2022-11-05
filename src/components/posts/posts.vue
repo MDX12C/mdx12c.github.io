@@ -54,12 +54,17 @@ const NewPostButton = () => {
 </template>
 
 <style lang="scss" scoped>
+@import '@/scss/global.scss';
 .posts {
   width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 20px;
+  @include pad {
+    width: 100%;
+    padding: 0;
+  }
 
   .newPost {
     width: 100%;
